@@ -7,251 +7,80 @@ namespace CalculatorConsole
         static void Main(string[] args)
         {
 
+            MyCalculator.Calculator();
+
             bool on = true;
             bool selected = true;
-            string title = "Main Menu";
-            Console.Clear();
-            Console.WriteLine("");
-            if (on == true)
-            {
-                Console.WriteLine("-----" + title + "-----\n");
-                Console.WriteLine("\t0 - Exit");
-                Console.WriteLine("\t1 - Calculator");
-                Console.WriteLine("\t2 - Settings");
+            double numA = 0;
+            double numB = 0;
+            string title = "Console Calculator";
+            if (on == true) ;
+            /*{
+                Console.Clear();
+                Console.WriteLine("");
+                numA = Math.InputA();
+                numB = Math.InputB();
+                Console.Clear();
+                Console.Write($"\t{numA} ");
+                Console.WriteLine("\n-----" + title + "-----");
+                Console.WriteLine("\n\t--Methods--");
+                Console.WriteLine("\t0 OR ext - Exit");
+                Console.WriteLine("\t1 OR add - Addition");
+                Console.WriteLine("\t2 OR sub - Subtraction");
+                Console.WriteLine("\t3 OR mul - Multiplication");
+                Console.WriteLine("\t4 OR div - Division");
+                Console.WriteLine($"\t5 OR prc - Percent");
+                Console.WriteLine("\nPlease select your preferred method...\n");
 
-                Console.Write("\t- ");
                 do
                 {
                     string op = Console.ReadLine();
+                    string result = "";
+
                     switch (op)
                     {
                         case "0":
-                            Exit();
+                            on = Exit();
                             break;
 
                         case "1":
-                            CalculatorMenu();
+                            op = "+";
+                            Console.WriteLine("\tAddition");
+                            result = Addition(numA, numB);
                             break;
                         case "2":
-                            Settings();
+                            op = "-";
+                            Console.WriteLine("Subtraction");
+                            result = Subtraction(numA, numB);
+                            break;
+                        case "3":
+                            op = "*";
+                            Console.WriteLine("Multiplication");
+                            result = Multiplication(numA, numB);
+                            break;
+                        case "4":
+                            op = "/";
+                            Console.WriteLine("Division");
+                            result = Division(numA, numB);
                             break;
                         default:
                             Console.WriteLine("Invalid Selection");
                             selected = false;
                             break;
                     }
-
+                    if (selected == true)
+                    {
+                        Console.WriteLine($"\tResult: {numA} {op} {numB} = {result}");
+                    }
                 } while (selected == false);
             }
-            else {}
-        } //Main
+            else { }
+        } //Main   
 
         static bool Exit()
         {
             Console.WriteLine("Exiting...");
-            return false;
-        }
-
-        static void CalculatorMenu()
-        {
-            bool selected = true;
-
-            string title = "Console Calculator";
-            Console.Clear();
-            Console.WriteLine("\n-----" + title + "-----");
-            Console.WriteLine("\n\t--Methods--");
-            Console.WriteLine("\t0 OR ext - Exit");
-            Console.WriteLine("\t1 OR add - Addition");
-            Console.WriteLine("\t2 OR sub - Subtraction");
-            Console.WriteLine("\t3 OR mul - Multiplication");
-            Console.WriteLine("\t4 OR div - Division");
-            Console.WriteLine($"\t5 OR prc - Percent");
-            Console.WriteLine("\nPlease select your preferred method...");
-            Console.Write("\t- ");
-            do
-            {
-                string op = Console.ReadLine();
-                switch (op)
-                {
-                    case "0":
-                        Exit();
-                        break;
-
-                    case "1":
-
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid Selection");
-                        selected = false;
-                        break;
-                }
-
-            } while (selected == false);
-
-
-            return;
-        }
-
-        static void Settings()
-        {
-
-            bool selected = true;
-            string title = "Settings";
-            Console.Clear();
-            Console.WriteLine("\n-----" + title + "-----");
-            Console.WriteLine("\n\t--Methods--");
-            Console.WriteLine("\t0 - Exit");
-            Console.WriteLine("\t1 - Foreground Color");
-            Console.WriteLine("\t2 - Background Color");
-            Console.WriteLine("\t3 - Return");
-            Console.WriteLine("\nPlease select your preferred method...");
-            Console.Write("\t- ");
-            do
-            {
-                string op = Console.ReadLine();
-                switch (op)
-                {
-                    case "0":
-                        Exit();
-                        break;
-                    case "1":
-                        Foreground();
-                        break;
-                    case "2":
-                        Background();
-                        break;
-                    case "3":
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid Selection");
-                        selected = false;
-                        break;
-                }
-
-            } while (selected == false);
-            return;
-        }
-        static void Foreground()
-        {
-
-            bool selected = true;
-            string title = "Foreground";
-            Console.Clear();
-            Console.WriteLine("\n-----" + title + "-----");
-            Console.WriteLine("\n\t--Methods--");
-            Console.WriteLine("\t0 - Exit");
-            Console.WriteLine("\t1 - Foreground Color");
-            Console.WriteLine("\t2 - Background Color");
-            Console.WriteLine("\t3 - Return");
-            Console.WriteLine("\nPlease select your preferred method...");
-            Console.Write("\t- ");
-            do
-            {
-                string op = Console.ReadLine();
-                switch (op)
-                {
-                    case "0":
-                        Exit();
-                        break;
-                    case "1":
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid Selection");
-                        selected = false;
-                        break;
-                }
-
-            } while (selected == false);
-            return;
-        }
-        static void Background()
-        {
-
-            bool selected = true;
-            string title = "Background";
-            Console.Clear();
-            Console.WriteLine("\n-----" + title + "-----");
-            Console.WriteLine("\n\t--Methods--");
-            Console.WriteLine("\t0 - Exit");
-            Console.WriteLine("\t1 - Foreground Color");
-            Console.WriteLine("\t2 - Background Color");
-            Console.WriteLine("\t3 - Return");
-            Console.WriteLine("\nPlease select your preferred method...");
-            Console.Write("\t- ");
-            do
-            {
-                string op = Console.ReadLine();
-                switch (op)
-                {
-                    case "0":
-                        Exit();
-                        break;
-                    case "1":
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid Selection");
-                        selected = false;
-                        break;
-                }
-
-            } while (selected == false);
-            return;
-        }
-        static double VariableA()
-                {
-            Console.WriteLine("Enter your first input, followed by Enter");
-            string inputA = Console.ReadLine();
-            string inputB = Console.ReadLine();
-            double numA;
-            while (!double.TryParse(inputA, out numA))
-            {
-                Console.WriteLine("Invalid input, enter a number");
-                inputA = Console.ReadLine();
-            }
-            return numA;
-        }
-        static double VariableB()
-        {
-            Console.WriteLine("Enter your second input, followed by Enter");
-            string inputB = Console.ReadLine();
-            double numB;
-            while (!double.TryParse(inputB, out numB))
-            {
-                Console.WriteLine("Invalid input, enter a number");
-                inputB = Console.ReadLine();
-            }
-            return numB;
-        }
-        /*
-        static double Addition(double varA, double varB)
-        { }
-        static double Subtraction(double varA, double varB)
-        { }
-        static double Division(double varA, double varB)
-        { }
-        static double Multiplication(double varA, double varB)
-        { }
-
-        static string Problem(double varA, char op, double varB)
-        {
-
-        }
-        
-        */
-
-
+        return false;*/
+        }      
     }
-
 }
