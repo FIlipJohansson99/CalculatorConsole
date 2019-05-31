@@ -16,7 +16,7 @@ namespace CalculatorConsole
                 string[] menuOptions = new string[9];
                 menuOptions[0] = "Exit";
                 menuOptions[1] = "Calculator";
-                menuOptions[2] = "";
+                menuOptions[2] = "Experimental Build";
                 menuOptions[3] = "";
                 menuOptions[4] = "";
                 menuOptions[5] = "";
@@ -38,6 +38,9 @@ namespace CalculatorConsole
                     break;
                     case "1":
                         MyCalculator.Calculator();
+                        break;
+                    case "2":
+                        Experimental.ExperimentalMain();
                         break;
                     default:
                         Console.WriteLine("Invalid Selection...");
