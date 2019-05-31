@@ -7,78 +7,30 @@ namespace CalculatorConsole
 {
     public class MyCalculator
     {
+        
         public static void Calculator()
         {
             bool exit = false;
+            string title = "Console Calculator";
 
             do
             {
-                Menu();
+                Console.Clear();
 
-            start:
-                string op = Console.ReadLine();
-                string inputA = "input";
-                string inputB = "second input";
-                string inputC = "third input";
-                switch (op)
-                {
-                    case "0":
-                    case "ext":
-                        Console.Write("Exiting...\n");
-                        exit = true;
-                        break;
-                    case "1":
-                    case "add":
-                        op = "+";
-                        MathMethods.Addition(op, inputA, inputB);
-                        break;
-                    case "2":
-                    case "sub":
-                        op = "-";
-                        MathMethods.Subtraction(op, inputA, inputB);
-                        break;
-                    case "3":
-                    case "div":
-                        op = "/";
-                        MathMethods.Division(op, inputA, inputB);
-                        break;
-                    case "4":
-                    case "mul":
-                        op = "*";
-                        MathMethods.Multiplication(op, inputA, inputB);
-                        break;
-                    case "5":
-                    case "prc":
-                        op = "/";
-                        MathMethods.Percentage(op, inputA, inputB);
-                        break;
-                    case "6":
-                    case "sqr":
-                        inputA = "root";
-                        MathMethods.SquareRoot(inputA);
-                        break;
-                    case "7":
-                    case "tri":
-                        op = "*";
-                        inputA = "base";
-                        inputB = "height";
-                        MathMethods.AreaTriangle(op, inputA, inputC);
-                        break;
-                    case "8":
-                    case "vol":
-                        op = "*";
-                        inputA = "base";
-                        inputB = "height";
-                        inputC = "depth";
-                        MathMethods.Volume(op, inputA, inputB, inputC);
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Selection");
-                        goto start;
+                string[] menuOptions = new string[9];
+                menuOptions[0] = "Return";
+                menuOptions[1] = "Addition";
+                menuOptions[2] = "Subtraction";
+                menuOptions[3] = "Division";
+                menuOptions[4] = "Multiplication";
+                menuOptions[5] = "Percentage";
+                menuOptions[6] = "Square Root";
+                menuOptions[7] = "Triangle Area";
+                menuOptions[8] = "Volume";
 
-                }
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
+                Program.Menu(menuOptions, title);
+
+                exit = Selector(exit);
             } while (exit == false);
         }//Calculator
         public static double InputA(string inputA)
@@ -92,10 +44,12 @@ namespace CalculatorConsole
                 if (String.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("The input can't be empty!");
-                    goto input;
                 }
-                Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                input = Console.ReadLine();
+                else
+                {
+                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
+                }
+                goto input;
             }
             return numA;
         }//InputA
@@ -111,10 +65,12 @@ namespace CalculatorConsole
                 if (String.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("The input can't be empty!");
-                    goto input;
                 }
-                Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                input = Console.ReadLine();
+                else
+                {
+                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
+                }
+                goto input;
             }
             return numB;
         }//InputB
@@ -130,30 +86,80 @@ namespace CalculatorConsole
                 if (String.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("The input can't be empty!");
-                    goto input;
                 }
-                Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                input = Console.ReadLine();
+                else
+                {
+                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
+                }
+                goto input;
             }
             return numC;
         }//InputC
-        public static void Menu()
+        public static bool Selector(bool exit)
         {
-            string title = "Console Calculator";
-            Console.Clear();
-            Console.WriteLine("\n-----" + title + "-----");
-            Console.WriteLine("\n\t--Methods--");
-            Console.WriteLine("\t0 OR ext - Exit");
-            Console.WriteLine("\t1 OR add - Addition");
-            Console.WriteLine("\t2 OR sub - Subtraction");
-            Console.WriteLine("\t3 OR mul - Division");
-            Console.WriteLine("\t4 OR div - Multiplication");
-            Console.WriteLine("\t5 OR prc - Percentage");
-            Console.WriteLine("\t6 OR sqr - Square Root");
-            Console.WriteLine("\t7 OR tri - Area Triangle");
-            Console.WriteLine("\t8 OR vol - Volume");
-            Console.WriteLine("\nPlease select your preferred method...\n");
-        }//Menu
+
+            string op = Console.ReadLine();
+            string inputA = "input";
+            string inputB = "second input";
+            string inputC = "third input";
+            
+            switch (op)
+            {
+                case "0":
+                case "ext":
+                    return true;
+                case "1":
+                case "add":
+                    op = "+";
+                    MathMethods.Addition(op, inputA, inputB);
+                    break;
+                case "2":
+                case "sub":
+                    op = "-";
+                    MathMethods.Subtraction(op, inputA, inputB);
+                    break;
+                case "3":
+                case "div":
+                    op = "/";
+                    MathMethods.Division(op, inputA, inputB);
+                    break;
+                case "4":
+                case "mul":
+                    op = "*";
+                    MathMethods.Multiplication(op, inputA, inputB);
+                    break;
+                case "5":
+                case "prc":
+                    op = "/";
+                    MathMethods.Percentage(op, inputA, inputB);
+                    break;
+                case "6":
+                case "sqr":
+                    inputA = "root";
+                    MathMethods.SquareRoot(inputA);
+                    break;
+                case "7":
+                case "tri":
+                    op = "*";
+                    inputA = "base";
+                    inputB = "height";
+                    MathMethods.AreaTriangle(op, inputA, inputB);
+                    break;
+                case "8":
+                case "vol":
+                    op = "*";
+                    inputA = "base";
+                    inputB = "height";
+                    inputC = "depth";
+                    MathMethods.Volume(op, inputA, inputB, inputC);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Selection");
+                    break;
+            }//switch 
+            return false;
+        }//Selector
+
     }//MyCalculator
     public class MathMethods
     {
@@ -237,6 +243,6 @@ namespace CalculatorConsole
             Console.WriteLine($"Result: {numA} {op} {numB} {op} {numC} = {numB * numB * numC}");
             return;
         }//Volume
-    }//MathMethods
+    }//MathMethods 
 }//CalculatorConsole
 
