@@ -157,7 +157,11 @@ namespace CalculatorConsole
                     Console.WriteLine("Invalid Selection");
                     break;
             }//switch 
+
+            Console.WriteLine("Press Enter to continue...");
+            Console.ReadKey();
             return false;
+
         }//Selector
 
     }//MyCalculator
