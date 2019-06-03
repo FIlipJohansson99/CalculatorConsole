@@ -41,7 +41,7 @@ namespace CalculatorConsole
             string input = Console.ReadLine();
             while (!double.TryParse(input, out numA))
             {
-                if (String.IsNullOrEmpty(input))
+                if (String.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("The input can't be empty!");
                 }
@@ -62,7 +62,7 @@ namespace CalculatorConsole
             double numB;
             while (!double.TryParse(input, out numB))
             {
-                if (String.IsNullOrEmpty(input))
+                if (String.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("The input can't be empty!");
                 }
@@ -83,7 +83,7 @@ namespace CalculatorConsole
             double numC;
             while (!double.TryParse(input, out numC))
             {
-                if (String.IsNullOrEmpty(input))
+                if (String.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("The input can't be empty!");
                 }
