@@ -31,66 +31,53 @@ namespace CalculatorConsole
                 Program.Menu(menuOptions, title);
 
                 exit = Selector(exit);
-            } while (exit == false);
+            } while (!exit);
         }//Calculator
+
         public static double InputA(string inputA)
         {
             double numA;
-            input:
-            Console.WriteLine($"Enter your {inputA}, followed by Enter");
-            string input = Console.ReadLine();
-            while (!double.TryParse(input, out numA))
-            {
-                if (String.IsNullOrWhiteSpace(input))
+
+                Console.WriteLine($"Enter your {inputA}, followed by Enter");
+
+                input:
+                string input = Console.ReadLine();
+                while (!double.TryParse(input, out numA))
                 {
-                    Console.WriteLine("The input can't be empty!");
+                    WrongInput(input);
+                    goto input;
                 }
-                else
-                {
-                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                }
-                goto input;
-            }
             return numA;
         }//InputA
         public static double InputB(string op, double numA, string inputB)
         {
+            double numB;
+
             Console.WriteLine($"Enter your {inputB}, followed by Enter");
+
             input:
             Console.Write($"{numA} {op} ");
             string input = Console.ReadLine();
-            double numB;
             while (!double.TryParse(input, out numB))
             {
-                if (String.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("The input can't be empty!");
-                }
-                else
-                {
-                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                }
+                WrongInput(input);
                 goto input;
             }
             return numB;
         }//InputB
         public static double InputC(string op, double numA, double numB, string inputC)
         {
+            double numC;
+
             Console.WriteLine($"Enter your {inputC}, followed by Enter");
+
             input:
             Console.Write($"{numA} {op} {numB} {op} ");
             string input = Console.ReadLine();
-            double numC;
+
             while (!double.TryParse(input, out numC))
             {
-                if (String.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("The input can't be empty!");
-                }
-                else
-                {
-                    Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
-                }
+                WrongInput(input);
                 goto input;
             }
             return numC;
@@ -112,6 +99,7 @@ namespace CalculatorConsole
                 case "add":
                     op = "+";
                     MathMethods.Addition(op, inputA, inputB);
+                    
                     break;
                 case "2":
                 case "sub":
@@ -154,15 +142,27 @@ namespace CalculatorConsole
                     MathMethods.Volume(op, inputA, inputB, inputC);
                     break;
                 default:
-                    Console.WriteLine("Invalid Selection");
+                    Program.TryAgain();
                     break;
             }//switch 
 
-            Console.WriteLine("Press Enter to continue...");
-            Console.ReadKey();
+            Program.PressAnyKey();
             return false;
 
         }//Selector
+
+        public static bool WrongInput(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("The input can't be empty!");
+            }
+            else
+            {
+                Console.WriteLine($"\"{input}\" Invalid input, enter a number using only numerical characters!");
+            }
+            return false;
+        }
 
     }//MyCalculator
     public class MathMethods

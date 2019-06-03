@@ -7,7 +7,7 @@ namespace CalculatorConsole
         static void Main(string[] args)
         {
             Console.Title = "Console Calculator";
-            string title = "Selector";
+            string title = "Menu";
             bool exit = false;
 
             do
@@ -33,7 +33,7 @@ namespace CalculatorConsole
                     case "0":
                         Console.WriteLine("Exiting...");
                         Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                         exit = true;
                     break;
                     case "1":
@@ -43,15 +43,13 @@ namespace CalculatorConsole
                         Experimental.ExperimentalMain();
                         break;
                     default:
-                        Console.WriteLine("Invalid Selection...");
-                        Console.WriteLine("Press any key to try again...");
-                        Console.ReadKey();
+                        TryAgain();
                         break;
                     case "8":
                         Settings.SettingsMain();
                         break;
                 }//switch
-            } while (exit == false);
+            } while (!exit);
         }//Main
         public static void Menu(string[] menuOptions, string title)
         {
@@ -67,5 +65,16 @@ namespace CalculatorConsole
             }
             Console.WriteLine("\nPlease select your preferred method...\n");
         }//Menu
+        public static void TryAgain()
+        {
+            Console.WriteLine("Invalid Selection...");
+            Console.WriteLine("Press any key to try again...");
+            Console.ReadKey(true);
+        }
+        public static void PressAnyKey()
+        {
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+        }
     }//Program
 }//CalculatorConsole

@@ -45,17 +45,15 @@ namespace CalculatorConsole
                     case "4":
                         break;
                     default:
-                        Console.WriteLine("Invalid Selection...");
-                        Console.WriteLine("Press any key to try again...");
-                        Console.ReadKey();
+                        Program.TryAgain();
                         break;
                 }//switch
-            } while (exit == false);
+            } while (!exit);
         }//SettingsMain
         public static void Foreground()
         {
             bool exit = false;
-            string title = "Settings";
+            string title = "Change Foreground";
 
             do
             {
@@ -102,17 +100,15 @@ namespace CalculatorConsole
                         Console.ResetColor();
                         break;
                     default:
-                        Console.WriteLine("Invalid Selection...");
-                        Console.WriteLine("Press any key to try again...");
-                        Console.ReadKey();
+                        Program.TryAgain();
                         break;
                 }//switch
-            } while (exit == false);
+            } while (!exit);
         }//Foreground
         public static void Background()
         {
             bool exit = false;
-            string title = "Settings";
+            string title = "Change Background";
 
             do
             {
@@ -160,19 +156,16 @@ namespace CalculatorConsole
                         Console.ResetColor();
                         break;
                     default:
-                        Console.WriteLine("Invalid Selection...");
-                        Console.WriteLine("Press any key to try again...");
-                        Console.ReadKey();
+                        Program.TryAgain();
                         break;
                 }//switch
-            } while (exit == false);
+            } while (!exit);
         }//Background
         public static void ColorError()
         {
             {
                 Console.WriteLine("You can't use the same background color as foreground color.");
-                Console.WriteLine("Press any key to continue");
-                Console.ReadKey();
+                Program.PressAnyKey();
             }
         }//ColorError
     }//Settings
