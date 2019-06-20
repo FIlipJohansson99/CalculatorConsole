@@ -244,7 +244,7 @@ namespace CalculatorConsole
             numA = MyCalculator.InputA(inputA);
             numB = MyCalculator.InputB(op, numA, inputB);
             numC = MyCalculator.InputC(op, numA, numB, inputC);
-            Console.WriteLine($"Result: {numA} {op} {numB} {op} {numC} = {numB * numB * numC}");
+            Console.WriteLine($"Result: {numA} {op} {numB} {op} {numC} = {(numA * numB) * numC}");
             return;
         }//Volume
     }//MathMethods 
